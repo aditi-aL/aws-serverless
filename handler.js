@@ -11,7 +11,7 @@ module.exports.calSum = (event, context, callback)  => {
    statusCode: 200,
    body: JSON.stringify({
      message: 'OK',
-       total: result
+       event: result
    }),
  };
  
