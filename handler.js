@@ -1,19 +1,28 @@
 'use strict';
 
-module.exports.calSum = (event, context, callback)  => {
-  let result = 0;
-  let n = 10;
-  for(let i = 1; i <= n; i++) {
-    result = result + i;
+module.exports.calSum = (event, context, callback) => {
+  let totalSum = 0;
+
+  let tempArr = process.argv.slice(2)
+
+  let inputArr = []
+
+  for (let i = 0; i < tempArr.length; i++) {
+      inputArr.push(parseInt(tempArr[i]))
   }
-     
- const response = {
-   statusCode: 200,
-   body: JSON.stringify({
-     message: 'OK',
-       event: result
-   }),
- };
- 
+
+  inputArr.forEach((ele) => {
+      totalSum += ele
+  })
+  console.log(process.argv);
+    
+  const response = {
+      statusCode: 200,
+      body:JSON.stringify ({
+          message: 'OK',
+          total: totalSum
+      }),
+  };
+
   callback(null, response)
 }
